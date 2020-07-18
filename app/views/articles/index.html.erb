@@ -1,3 +1,4 @@
+
  <div class="container">
    <div class="tabs">
      <div class="tabs_item active">
@@ -7,9 +8,7 @@
        タイムライン
      </div>
    </div>
-  <% @articles.each do |article| %>
-    <%= link_to article_path(article) do %>
-     <div class="card">
+
      <div class="card_image">
        <%= image_tag 'eyecatch1.png' %>
      </div>
