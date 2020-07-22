@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only:[:show, :edit, :update]
-  
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
   def index
     @articles = Article.all
@@ -50,7 +50,7 @@ class ArticlesController < ApplicationController
   end  
   
  def set_article
-  @article = Article.find(params[:id])
+  @article =  Article.find(params[:id])
  end
 
 end
