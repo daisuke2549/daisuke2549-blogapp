@@ -1,28 +1,91 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
-   TargetRubyVersion: 2.6
-   DisabledByDefault: true
-   Exclude:
-     - db/schema.rb
-     - vendor/bundle/**/*
-     - node_modules/**/*
+  Exclude:
+    - db/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - lib/geohash.rb
+    - lib/manager/geo.rb
+    - bin/spring
+  TargetRubyVersion: 2.6
 
- Bundler/OrderedGems:
-   Enabled: true
+# Offense count: 326
+# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+Metrics/LineLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*/.rake'
+    - 'spec/**/*.rb'
+  Max: 275
 
- Layout/EmptyLines:
-   Enabled: true
+Metrics/MethodLength:
+  Max: 150 # remove this after refacotr
 
- Layout/TrailingEmptyLines:
- Enabled: true
+PredicateName:
+  ForbiddenPrefixes:
+    - has_
 
- Layout/TrailingWhitespace:
-   Enabled: true
+MixinUsage:
+  Include:
+    - app/**/*.rb
 
- Style/MethodDefParentheses:
-   Enabled: true
+Naming/MethodParameterName:
+  MinNameLength: 1
 
- Style/StringLiterals:
-   EnforcedStyle: single_quotes
+Naming/AccessorMethodName:
+  Enabled: false
 
- Style/StringLiteralsInInterpolation:
-   EnforcedStyle: single_quotes
+Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+# Offense count: 7
+Metrics/PerceivedComplexity:
+  Max: 18
+
+# Offense count: 45
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 106
+
+# Offense count: 45
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 109
+
+# Offense count: 1
+# Configuration parameters: CountKeywordArgs.
+Metrics/ParameterLists:
+  Max: 7
+
+# Offense count: 7
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+# Offense count: 4
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Max: 140
+
+# Offense count: 1
+# Configuration parameters: CountBlocks.
+Metrics/BlockNesting:
+  Max: 4
+
+# Offense count: 40
+# Configuration parameters: CountComments, ExcludedMethods.
+Metrics/BlockLength:
+  Max: 111
+
+# Offense count: 53
+Metrics/AbcSize:
+  Max: 109
+
+# Offense count: 1
+Lint/SuppressedException:
+  Exclude:
+    - 'config/unicorn.rb'
