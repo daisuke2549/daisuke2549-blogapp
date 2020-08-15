@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
     def create
       article = Article.find(params[:article_id])
-      @comment = article.comments.build(comment_params)
+        @comment = article.comments.build(comment_params)
       if @comment.save
         redirect_to article_path(article), notice: 'コメントを追加'
       else
@@ -21,12 +21,10 @@ class CommentsController < ApplicationController
       end  
     end
     
-    @comment.save!
 
-    render json: @comment
 
     private
     def comment_params
-      params.require(:comment).permit(:body)
+      params.require(:comment).permit(:content)
     end
   end
