@@ -1,4 +1,11 @@
 import $ from 'jquery'
+<<<<<<< HEAD
+import axios from 'modules/axios'
+import {
+  listenInactiveHeartEvent,
+  listenActiveHeartEvent
+} from 'modules/handle_heart'
+=======
 import axios from 'axios'
 import { csrfToken } from 'rails-ujs'
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
@@ -9,6 +16,7 @@ const handleHeartDisplay = (hasLiked) => {
     $('.inactive-heart').removeClass('hidden')
   }
 }
+>>>>>>> master
 
 const handleCommentForm = () => {
   $('.show-comment-form').on('click', () => {
@@ -25,9 +33,22 @@ const appendNewComment = (comment) => {
 
 
 
+<<<<<<< HEAD
+   axios.get(`/articles/${articleId}/comments`)
+     .then((response) => {
+       const comments = response.data
+       comments.forEach((comment) => {
+         appendNewComment(comment)
+       })
+     })
+     .catch((error) => {
+       window.alert('失敗!')
+     })
+=======
 document.addEventListener('DOMContentLoaded', () => {
   const dataset = $('#article-show').data()
   const articleId = dataset.articleId
+>>>>>>> master
 
   axios.get(`/articles/${articleId}/comments`)
     .then((response) => {
@@ -40,6 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 handleCommentForm()
 
+<<<<<<< HEAD
+     listenInactiveHeartEvent(articleId)
+     listenActiveHeartEvent(articleId)
+ })
+=======
 
 $('.add-comment-button').on('click', () => {
   const content = $('#comment_content').val()
@@ -84,3 +110,4 @@ $('.add-comment-button').on('click', () => {
       })
   })
 })
+>>>>>>> master
