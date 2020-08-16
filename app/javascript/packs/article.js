@@ -1,9 +1,9 @@
 import $ from 'jquery'
- import axios from 'modules/axios'
- import {
-   listenInactiveHeartEvent,
-   listenActiveHeartEvent
- } from 'modules/handle_heart'
+import axios from 'modules/axios'
+import {
+  listenInactiveHeartEvent,
+  listenActiveHeartEvent
+} from 'modules/handle_heart'
 
  const handleHeartDisplay = (hasLiked) => {
    if (hasLiked) {
@@ -38,7 +38,7 @@ import $ from 'jquery'
        })
      })
      .catch((error) => {
-       window.alert('失敗！')
+       window.alert('失敗!')
      })
 
    handleCommentForm()
@@ -65,6 +65,6 @@ import $ from 'jquery'
        handleHeartDisplay(hasLiked)
      })
 
-   listenInactiveHeartEvent(articleId)
-   listenActiveHeartEvent(articleId)
+     listenInactiveHeartEvent(articleId)
+     listenActiveHeartEvent(articleId)
  })
