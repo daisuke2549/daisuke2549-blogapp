@@ -25,10 +25,8 @@
       = image_tag 'heart.svg'
 .article
   %h2 コメント一覧
-  - @comments.each do |comment|
-    .article_comment
-      %p= comment.content
- 
+  .comments-container
+
 .container
   .btn-secondary.show-comment-form
     コメントを追加
