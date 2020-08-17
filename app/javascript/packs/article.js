@@ -1,22 +1,22 @@
 import $ from 'jquery'
-<<<<<<< HEAD
-import axios from 'modules/axios'
-import {
-  listenInactiveHeartEvent,
-  listenActiveHeartEvent
-} from 'modules/handle_heart'
-=======
-import axios from 'axios'
-import { csrfToken } from 'rails-ujs'
-axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
-const handleHeartDisplay = (hasLiked) => {
-  if (hasLiked) {
-    $('.active-heart').removeClass('hidden')
-  } else {
-    $('.inactive-heart').removeClass('hidden')
-  }
-}
->>>>>>> master
+// HEAD
+// import axios from 'modules/axios'
+// import {
+//   listenInactiveHeartEvent,
+//   listenActiveHeartEvent
+// } from 'modules/handle_heart'
+// =======
+// import axios from 'axios'
+// import { csrfToken } from 'rails-ujs'
+// axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
+// const handleHeartDisplay = (hasLiked) => {
+//   if (hasLiked) {
+//     $('.active-heart').removeClass('hidden')
+//   } else {
+//     $('.inactive-heart').removeClass('hidden')
+//   }
+// }
+// >>>>>>> master
 
 const handleCommentForm = () => {
   $('.show-comment-form').on('click', () => {
