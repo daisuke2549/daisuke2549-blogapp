@@ -50,6 +50,8 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :content, :eyecatch)
   end
 
+
+
   def set_article
     @article = Article.find(params[:id])
   end
