@@ -5,13 +5,8 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'articles#index'
-  resource :timeline, only: [:show]   # [:show, :create] => %i(show)
-
-  resources :articles do
-    resources :comments, only: [:index, :new, :create]
-
-    resource :like, only: [:show, :create, :destroy]
-  end  
+  
+  resources :articles 
 
   resources :accounts, only: [:show] do
     resources :follows, only: [:create]
@@ -19,6 +14,16 @@ Rails.application.routes.draw do
   end
 
 
-  resource :profile, only: [:show, :edit, :update] 
-  resources :favorites, only: [:index]
+  scope module: :apps do
+    resources :favorites, only: [:index]
+    resource :timeline, only: [:show]   # [:show, :create] => %i(show)
+    resource :profile, only: [:show, :edit, :update] 
+  end
+
+  namespace :api, defaults: {format: :json} do 
+    scope '/articles/:article_id' do
+      resources :comments, only: [:index, :create]
+      resource :like, only: [:show, :create, :destroy]
+    end  
+  end
 end

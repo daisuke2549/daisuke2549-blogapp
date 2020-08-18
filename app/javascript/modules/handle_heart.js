@@ -1,14 +1,12 @@
 import $ from 'jquery'
 import axios from 'modules/axios'
 
-axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
-
-const listenInactiveHeartEvent = (articleId) => {
-  $('.inactive-heart').on('click', () => {
-    axios.post(`/articles/${articleId}/like`)
-      .then((response) => {
-        if (response.data.status === 'ok') {
-          $('.active-heart').removeClass('hidden')
+ const listenInactiveHeartEvent = (articleId) => {
+   $('.inactive-heart').on('click', () => {
+     axios.post(`/api/articles/${articleId}/like`)
+       .then((response) => {
+         if (response.data.status === 'ok') {
+           $('.active-heart').removeClass('hidden')
           $('.inactive-heart').addClass('hidden')
         }
       })
@@ -19,12 +17,12 @@ const listenInactiveHeartEvent = (articleId) => {
   })
 }
 
-const listenActiveHeartEvent = (articleId) => {
-  $('.active-heart').on('click', () => {
-    axios.delete(`/articles/${articleId}/like`)
-      .then((response) => {
-        if (response.data.status === 'ok') {
-          $('.active-heart').addClass('hidden')
+ const listenActiveHeartEvent = (articleId) => {
+   $('.active-heart').on('click', () => {
+     axios.delete(`/api/articles/${articleId}/like`)
+       .then((response) => {
+         if (response.data.status === 'ok') {
+           $('.active-heart').addClass('hidden')
           $('.inactive-heart').removeClass('hidden')
         }
       })
@@ -34,7 +32,6 @@ const listenActiveHeartEvent = (articleId) => {
       })
   })
 }
-
 export {
   listenInactiveHeartEvent,
   listenActiveHeartEvent
